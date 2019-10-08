@@ -2,15 +2,22 @@
   "name": "crawler_house",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./app/schedule_task/lianjia_new.js",
+    "start_server": "nodemon --ignore node_modules/ --ignore temp_data/ --ignore public/"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "crawler": "^1.2.1",
     "loadash": "^1.0.0",
-    "temme": "^0.8.3"
+    "temme": "^0.8.3",
+    "nodemon": "^1.11.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.15.6"
   }
 }
