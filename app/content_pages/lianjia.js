@@ -16,8 +16,8 @@ router.route('/lianjia_new_details').get((req, res) => {
 });
 
 router.route('/lianjia_er_details').get((req, res) => {
-    const results = JSON.parse(fs.readFileSync(config.lianjia.new_house.outputPath));
-    res.send(JSON.stringify({}));
+    const results = JSON.parse(fs.readFileSync(config.lianjia.er_house.outputPath));
+    res.send(JSON.stringify(results));
 });
 
 router.route('/db_details').get((req, res) => {

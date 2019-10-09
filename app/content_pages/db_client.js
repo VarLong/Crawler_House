@@ -11,6 +11,9 @@ module.exports = {
             };
             const dbase = db.db("House_Details");
             dbase.listCollections().toArray(function (err, items) {
+                if (err) {
+                    callback(err);
+                };
                 if (items && items.length > 0) {
                     console.log(JSON.stringify(items));
                 }
@@ -26,7 +29,7 @@ module.exports = {
                 return;
             };
             const dbase = db.db("House_Details");
-            const dbcollection = dbase.collection(name);
+            dbase.collection(name);
         });
     },
 
@@ -39,10 +42,10 @@ module.exports = {
             const dbase = db.db("House_Details");
             const collectionDB = dbase.collection(name);
             const detailInfo = {
-                'title': name,
-                'last_update': new Date().getTime(),
-                'items': items
-            }
+                title: name,
+                last_update: new Date().getTime(),
+                items: items
+            };
             collectionDB.deleteMany({}, (derr, eres) => {
                 collectionDB.insertOne(detailInfo, (ierr, ires) => {
                     callback();
@@ -58,17 +61,13 @@ module.exports = {
                 return;
             };
             const dbase = db.db("House_Details");
-            const collectionDB = dbase.collection(name).find({}).toArray((err, results) => {
+            dbase.collection(name).find({}).toArray((err, results) => {
+                if (err) {
+                    callback(err);
+                };
                 console.log(results);
                 callback(results);
             });
-
         });
-
-    },
-
-}
-
-
-
-
+    }
+};

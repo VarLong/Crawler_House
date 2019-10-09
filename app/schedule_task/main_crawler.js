@@ -8,7 +8,7 @@ function deleteJsons(filePath) {
     if (fs.existsSync(filePath)) {
         fs.unlinkSync(filePath);
     }
-};
+}
 
 function saveArray(filePath, list) {
     let f_list = [];
@@ -23,9 +23,8 @@ function saveArray(filePath, list) {
     fs.writeFileSync(filePath, JSON.stringify(f_list));
 }
 
-
 module.exports = {
-    lianjia_new_Crawler: any = {
+    lianjia_new_Crawler: {
         lianjia_baseUrl: undefined,
         lianjia_outputPath: undefined,
         init: function () {
@@ -48,8 +47,8 @@ module.exports = {
 
                         item = {
                             main_openDate: main_openDate
-                        }
-                        _this.getItemDetails2(loupanURL, item)
+                        };
+                        _this.getItemDetails2(loupanURL, item);
                     }
                     done(() => {
                     }
@@ -76,8 +75,7 @@ module.exports = {
                         item['main_developer'] = $('.big-left ul:nth-child(2) li:nth-child(7) span:nth-child(2)').text().trim();
                         saveArray(_this.lianjia_outputPath, item);
                     }
-                    done(() => {
-                    }
+                    done(() => { }
                     );
                 }
             });
@@ -92,10 +90,10 @@ module.exports = {
                     if (error) {
                         return console.log(error);
                     } else {
-                        let t_items = _.compact(temme(res.body, `[class="resblock-list-wrapper"] li [class="resblock-desc-wrapper"] [class="resblock-name"]@{a[href=$url]{$name}};`));
+                        const t_items = _.compact(temme(res.body, `[class='resblock-list-wrapper'] li [class='resblock-desc-wrapper'] [class='resblock-name']@{a[href=$url]{$name}};`));
                         t_items.forEach((item) => {
                             _this.getItemDetails1(item.url);
-                        })
+                        });
                     }
                     done();
                 }
@@ -123,7 +121,7 @@ module.exports = {
                         return console.log(`get LianJia pages error ${error}`);
                     } else {
                         var $ = res.$;
-                        const data_total_count = $(".page-box").attr('data-total-count')
+                        const data_total_count = $('.page-box').attr('data-total-count');
                         const pageCount = data_total_count % 10 > 0 ? Math.ceil(data_total_count / 10) : data_total_count / 10;
                         deleteJsons(_this.lianjia_outputPath);
                         console.log(`get the pageCount: ${pageCount}`);
@@ -138,14 +136,14 @@ module.exports = {
         }
     },
 
-    lianjia_er_Crawler: any = {
+    lianjia_er_Crawler: {
         lianjia_baseUrl: undefined,
         lianjia_outputPath: undefined,
         parts: [''],
         init: function () {
             this.lianjia_baseUrl = config.lianjia.er_house.baseUrl;
             this.lianjia_outputPath = config.lianjia.er_house.outputPath;
-            this.parts = config.lianjia.er_house.parts
+            this.parts = config.lianjia.er_house.parts;
         },
         getItemDetails1: function (url) {
             const _this = this;
@@ -167,7 +165,7 @@ module.exports = {
                             main_favCount: main_favCount,
                             main_totalPrice: main_totalPrice,
                             main_unitPrice: main_unitPrice
-                        }
+                        };
                         saveArray(_this.lianjia_outputPath, item);
                     }
                     done(() => { }
@@ -185,12 +183,12 @@ module.exports = {
                     if (error) {
                         return console.log(error);
                     } else {
-                        let t_items = [];
+                        const t_items = [];
                         const $ = res.$;
-                        const dom_items = $(".sellListContent li");
+                        const dom_items = $('.sellListContent li');
                         for (const index in dom_items) {
                             if (index === '0' || parseInt(index)) {
-                                const temp_dom_id = $(`.sellListContent li:nth-child(${parseInt(index) + 1})`).attr("data-lj_action_housedel_id");
+                                const temp_dom_id = $(`.sellListContent li:nth-child(${parseInt(index) + 1})`).attr('data-lj_action_housedel_id');
                                 const temp_dom_name = $(`.sellListContent li:nth-child(${parseInt(index) + 1}) .info .title a`).text();
                                 t_items.push({
                                     id: temp_dom_id,
@@ -208,7 +206,6 @@ module.exports = {
             });
             crawler.queue(url);
         },
-
         startCrowlePart(partUrl) {
             this.init();
             const _this = this;
@@ -220,7 +217,7 @@ module.exports = {
                         return console.log(`get LianJia pages error ${error}`);
                     } else {
                         const $ = res.$;
-                        const s = $(".contentBottom .page-box .house-lst-page-box").attr('page-data');
+                        const s = $('.contentBottom .page-box .house-lst-page-box').attr('page-data');
                         const pageCount = JSON.parse(s).totalPage;
                         deleteJsons(_this.lianjia_outputPath);
                         for (let index = 1; index <= pageCount; index++) {
@@ -234,8 +231,7 @@ module.exports = {
         }
     },
 
-    julixinjiaCrawler: any = {
+    julixinjiaCrawler: {
 
     }
-}
-
+};
