@@ -12,8 +12,9 @@ router.use(function (request, response, next) {
     next();
 });
 
-// console.log(main_crawler);
-// main_crawler.lianjiaCrawler.startCrowle();
+// main_crawler.lianjia_new_Crawler.startCrowle();
+// main_crawler.lianjia_er_Crawler.startCrowlePart('xiqing/');
+
 router.route('/').get((req, res) => {
     res.render('home', { sess: req.session });
 });

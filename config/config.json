@@ -1,13 +1,14 @@
 {
-    "mongoDbUrl": "mongodb://tv3-agnt-0301.mr.ericsson.se:27017/ShieldResult",
+    "mongoDbUrl": "mongodb://127.0.0.1:27017/House_Details",
     "lianjia": {
         "new_house": {
             "baseUrl": "https://tj.fang.lianjia.com/loupan/",
             "outputPath": "temp_data/lianjia_new_details.json"
         },
-        "second_house": {
-            "baseUrl": "",
-            "outputPath": ""
+        "er_house": {
+            "baseUrl": "https://tj.lianjia.com/ershoufang/",
+            "parts": ["xiqing/"],
+            "outputPath": "temp_data/lianjia_er_details.json"
         }
     },
     "julixinfang": {}
