@@ -1,0 +1,13 @@
+{
+    "src_folders": [
+        "artifacts/build/tests"
+    ],
+    "output_folder": "artifacts/reports",
+    "globals_path": "configs/globalsModule.js",
+    "custom_reporter_path": "artifacts/build/lib/custom-reporters/reporter.js",
+    "custom_commands_path": "artifacts/build/lib/custom-commands",
+    "custom_assertions_path": "artifacts/build/lib/custom-assertions",
+    "page_objects_path": "artifacts/build/lib/page-objects",
+    "test_workers": true,
+    "test_settings": {}
+}
