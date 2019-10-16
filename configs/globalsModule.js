@@ -51,6 +51,10 @@ module.exports = {
 
   afterEach(browser, cb) {
     browser.perform(function () {
+      if (browser.currentTest.results.errors > 0 || browser.currentTest.results.failed > 0) {
+        var screenshotPath = "./screenshot/" + "_" + "errors" + ".png";
+        browser.saveScreenshot(screenshotPath);
+      }
       cb();
     });
   },

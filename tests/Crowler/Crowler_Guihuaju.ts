@@ -26,9 +26,8 @@ module.exports = {
 
     "Log in and check for logo"(browser: NightWatchBrowser) {
         const gitHubPage = browser.page.Tj_GuiHuaJuPage();
-        gitHubPage.waitMainPageVisible();
-        for (let index = 0; index < 500; index++) {
-            gitHubPage.clickNext(index + 2);
+        for (let index = 1; index < 790; index++) {
+            gitHubPage.gotoPage(index);
         }
         // gitHubPage.clickNext();
         // gitHubPage.clickNext();

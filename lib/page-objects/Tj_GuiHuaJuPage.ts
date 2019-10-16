@@ -36,16 +36,23 @@ export class Tj_GuiHuaJuPage extends Atom {
             selector: "#AspNetPager1",
             locateStrategy: "css selector"
         },
+        indexInput: {
+            selector: "#AspNetPager1_input",
+            locateStrategy: "css selector"
+        },
+        indexBtn: {
+            selector: "#AspNetPager1_btn",
+            locateStrategy: "css selector"
+        },
         nextButton: {
             selector: "//div[@id='AspNetPager1']/a[contains(text(), '下一页')]",
             locateStrategy: "xpath"
         }
     };
 
-    public waitMainPageVisible(pageIndex: number) {
-        this.api.useCss().waitForElementVisible(this.elements["binner"].selector);
+    public waitMainPageVisible(pageIndex: number = 1) {
+        this.api.useXpath().waitForElementVisible("//div[@id='AspNetPager1']/span[contains(text()," + pageIndex + ")]");
         this.api.useCss().waitForElementVisible(this.elements["indexBox"].selector);
-
         this.api.execute(() => {
             const items = [];
             const itemLenght = document.querySelectorAll("#form1 table:nth-child(10) tr td:nth-child(2) table tr:nth-child(6) div table tr").length - 1;
@@ -83,9 +90,23 @@ export class Tj_GuiHuaJuPage extends Atom {
         });
 
     }
-    public clickNext(pageIndex: number) {
+
+    public inputIndex(pageIndex: number) {
+        const _this = this;
+        this.perform(function () {
+            console.log(`pageindex: ${pageIndex}`);
+            _this.api.execute((val) => {
+                document.querySelector("#AspNetPager1_input")["value"] = val;
+            }, [String(pageIndex)], (result: CallbackResult) => {
+                _this.assert.equal(result.status, 0, "Set value sucessfully.");
+            });
+            _this.click(_this.elements["indexBtn"].selector);
+        });
+    }
+
+    public gotoPage(pageIndex: number) {
         this.waitMainPageVisible(pageIndex);
-        this.useXpath().click(this.elements["nextButton"].selector);
+        this.inputIndex(pageIndex + 1);
     }
 }
 
