@@ -93,25 +93,20 @@ function logByDateFeature(names, months) {
             const nameLists = [];
             ele.items.forEach((item) => {
                 if (nameLists.indexOf(item.name) < 0) {
-                    nameLists.push(item.date_allow + '_' + item.name + '_' + item.size + '平米' + '\n');
+                    nameLists.push(item.date_allow + ' | ' + item.name + ' | ' + item.size + '平米' + ' | ' + item.provider + '\n');
                 }
             })
-            console.log(`地块名字：${nameLists.join(' | ')}`);
-            console.log(`\n`);
+            console.log(`地块名字：${nameLists.join(' --> ')}`);
         }
     });
 }
 
-
+// output the details in different files.
 // outputTheResultByArea(results, true);
 
 
-
-// logByMonths(Object.keys(objKeys), 3);
-
-// logByFeature(Object.keys(objKeys), 3);
-logByDateFeature(['xq'], 3);
 //
+logByDateFeature(['bc'], 3);
 
 
 

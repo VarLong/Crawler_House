@@ -29,7 +29,7 @@ module.exports = {
 
     saveData(filePath: string, list: any) {
         const fp = "./temp_data/" + filePath;
-        fs.writeFileSync(fp, JSON.stringify(f_list));
+        fs.writeFileSync(fp, JSON.stringify(list));
     },
 
     // Load .js, .json, or .json5 file, or die trying.

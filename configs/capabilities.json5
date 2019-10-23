@@ -48,7 +48,8 @@
                     "disable-gpu",
                     "disable-infobars",
                     "test-type",
-                    "disable-extensions"                ]
+                    "disable-extensions",
+                    "headless"                ]
             }
         }
     },
