@@ -10,8 +10,7 @@ function pad(n: number): string {
 
 module.exports = {
 
-    initTempData() {
-        const filePath = "./temp_data/Tj_ghj.json";
+    initTempData(filePath: string) {
         fs.writeFileSync(filePath, JSON.stringify([]));
     },
 

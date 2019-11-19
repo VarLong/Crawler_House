@@ -1,9 +1,5 @@
 /**
- * Login and Logout
- */
-
-/**
- * Login, Logout
+ * GuiHua Data.
  */
 
 import { NightWatchBrowser } from "../../typings/nightwatch/nightwatch";
@@ -13,7 +9,7 @@ const setup = require("../../lib/common/setup");
 module.exports = {
     tags: ["CI"],
     before(browser: NightWatchBrowser) {
-        setup.begin(browser);
+        setup.begin(browser, "./temp_data/Tj_ghj.json");
     },
 
     after(browser: NightWatchBrowser) {
