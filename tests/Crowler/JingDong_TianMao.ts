@@ -31,10 +31,16 @@ module.exports = {
     },
 
     "Search the results and get the data for JD."(browser: NightWatchBrowser) {
+        const getDataPage = browser.page.GetInfoPage();
+
         browser.waitForElementVisible("#key");
         browser.setValue("#key", searchKey);
         browser.click(".search-m .form button:nth-child(5)");
         browser.waitForElementVisible("#J_goodsList");
+        const lists = getDataPage.getJD_DataList();
+        // 销量
+        browser.click("#J_filter .f-line .f-sort  a:nth-child(2)");
+        browser.waitForElementNotPresent("#J_loading");
     },
 
     "Go to TM for search"(browser: NightWatchBrowser) {
