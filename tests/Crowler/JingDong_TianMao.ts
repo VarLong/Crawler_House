@@ -9,8 +9,8 @@ const setup = require("../../lib/common/setup");
 const searchKey = "台式机";
 let jd_list: any[] = [];
 let tm_list: any[] = [];
-const userName = "15779681353";
-const password = "Zhuhong969632907";
+const userName = "";
+const password = "";
 
 module.exports = {
     tags: ["TJ"],
