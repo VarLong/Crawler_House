@@ -9,9 +9,16 @@
         "switch-default": true,
         "new-parens": true,
         "arrow-return-shorthand": true,
-        "comment-format": [true, "check-space"],
-        "quotemark": [true, "double"],
-        "whitespace": [true,
+        "comment-format": [
+            true,
+            "check-space"
+        ],
+        "quotemark": [
+            true,
+            "double"
+        ],
+        "whitespace": [
+            true,
             "check-branch",
             "check-decl",
             "check-operator",
@@ -20,10 +27,13 @@
         ],
         "prefer-const": true,
         "no-null-keyword": true,
-        "semicolon": [true, "always"],
+        "semicolon": [
+            true,
+            "always"
+        ],
         "no-consecutive-blank-lines": true,
         "no-trailing-whitespace": true,
         "jsdoc-format": true,
-        "no-var-keyword":true
+        "no-var-keyword": true
     }
 }

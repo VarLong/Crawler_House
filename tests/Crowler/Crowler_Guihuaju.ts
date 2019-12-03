@@ -17,6 +17,7 @@ module.exports = {
     },
 
     "Log in Git hub"(browser: NightWatchBrowser) {
+        const list = Object.keys(["aaa", "bbb"]);
         browser.url("http://ghhzrzy.tj.gov.cn/chaxun.aspx?id=CK0701&tablename=data_jianshe");
     },
 

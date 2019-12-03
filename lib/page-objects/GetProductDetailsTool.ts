@@ -3,7 +3,7 @@
 import { Atom } from "./Atom";
 import { CallbackResult } from "../../typings/nightwatch/nightwatch";
 
-export class GetInfoPage extends Atom {
+export class GetProductDetailsTool extends Atom {
 
     constructor(...args: any[]) {
         super();
@@ -14,13 +14,9 @@ export class GetInfoPage extends Atom {
             selector: "#J_goodsList ul li",
             locateStrategy: "css selector"
         },
-        tm_list: {
-            selector: "#J_ItemList .product",
+        sn_list: {
+            selector: "#product-wrap .product-list",
             locateStrategy: "css selector"
-        },
-        t_list: {
-            selector: "//div[@id='AspNetPager1']/a[contains(text(), '下一页')]",
-            locateStrategy: "xpath"
         }
     };
 
@@ -54,42 +50,44 @@ export class GetInfoPage extends Atom {
         });
     }
 
-    public getTM_DataList(sortBy: string, callback: any) {
-        this.api.useCss().waitForElementVisible(this.elements["tm_list"].selector);
-        this.api.execute(() => {
+    public getSN_DataList(sortBy: string, callback: any) {
+        this.api.useCss().waitForElementVisible(this.elements["sn_list"].selector);
+        this.api.execute((sortBy: string) => {
             const items = [];
-            const itemLenght = document.querySelectorAll("#J_ItemList .product").length - 1;
-
-            for (let index = 0; index < itemLenght; index++) {
-                const tm_price = document.querySelector("#J_ItemList div:nth-child(" + (index + 1) + ") .productPrice").textContent.trim();
-                const tm_name = document.querySelector("#J_ItemList div:nth-child(" + (index + 1) + ") .productTitle ").textContent.trim().replace(/\r|\n|\t/g, " ");
-                const tm_deal = document.querySelector("#J_ItemList div:nth-child(" + (index + 1) + ") .productStatus span:nth-child(1)").textContent.trim().replace(/\r|\n|\t/g, " ");
-                const tm_commit = document.querySelector("#J_ItemList div:nth-child(" + (index + 1) + ") .productStatus span:nth-child(2)").textContent.trim().replace(/\r|\n|\t/g, " ");
-                const tm_shop = document.querySelector("#J_ItemList div:nth-child(" + (index + 1) + ") .productShop").textContent.trim();
-                const tm_url = "https:" + document.querySelector("#J_ItemList div:nth-child(" + (index + 1) + ") .productImg-wrap a").getAttribute("href").trim();
+            for (let index = 0; index < 20; index++) {
+                let element: any;
+                element = document.querySelector("#product-wrap .product-list .general li:nth-child(" + (index + 1) + ") .price-box");
+                const sn_price = element ? element.textContent.trim() : "";
+                element = document.querySelector("#product-wrap .product-list .general li:nth-child(" + (index + 1) + ") .title-selling-point");
+                const sn_name = element ? element.textContent.trim().replace(/\r|\n|\t/g, " ") : "";
+                element = document.querySelector("#product-wrap .product-list .general li:nth-child(" + (index + 1) + ") .evaluate-old");
+                const sn_deal = element ? element.textContent.trim().replace(/\r|\n|\t/g, " ") : "";
+                element = document.querySelector("#product-wrap .product-list .general li:nth-child(" + (index + 1) + ") .store-stock");
+                const sn_shop = element ? element.textContent.trim().replace(/\r|\n|\t/g, " ") : "";
+                element = document.querySelector("#product-wrap .product-list .general li:nth-child(" + (index + 1) + ") .title-selling-point a");
+                const sn_url = element ? "https:" + element.getAttribute("href").trim() : "";
 
                 const y = {
                     website: "TM.com",
-                    price: tm_price,
-                    name: tm_name,
-                    commit: tm_commit,
-                    deal: tm_deal,
-                    shop: tm_shop,
-                    url: tm_url,
+                    price: sn_price,
+                    name: sn_name,
+                    deal: sn_deal,
+                    shop: sn_shop,
+                    url: sn_url,
                     sortBy: sortBy
                 };
                 items.push(y);
             }
             return JSON.stringify(items);
-        }, [], (result: CallbackResult) => {
+        }, [sortBy], (result: CallbackResult) => {
             callback(result.value);
         });
     }
 
 }
 
-const v = new GetInfoPage()["__proto__"];
+const v = new GetProductDetailsTool()["__proto__"];
 module.exports = {
     commands: [v],
-    elements: GetInfoPage.elements
+    elements: GetProductDetailsTool.elements
 };
