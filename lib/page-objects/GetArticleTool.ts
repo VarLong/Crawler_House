@@ -8,13 +8,13 @@ const toutiaoCommands = {
             browser.api.waitForElementVisible(".search-content");
         });
     },
-    searchForKey(keyValue: string, keyType: string) {
+    searchForKey(keyValue: string, callback: Function) {
         this.api.setValue(".search-content input:nth-child(1)", keyValue);
         this.api.click(".search-btn");
         this.api.waitForElementVisible(".container");
         this.api.waitForElementVisible(".feedBox");
         this.api.waitForElementVisible(".feedBox .sections .articleCard");
-        this.api.execute((keyType: string) => {
+        this.api.execute(() => {
             const items = [];
             const elementLength = document.querySelectorAll(".feedBox .sections .articleCard").length - 1;
             for (let index = 0; index < elementLength; index++) {
@@ -22,20 +22,22 @@ const toutiaoCommands = {
                 if (element) {
                     const tt_title = document.querySelector(".feedBox .sections .articleCard:nth-child(" + (index + 1) + ") .rbox-inner .title-box").textContent.trim();
                     const tt_user = document.querySelector(".feedBox .sections .articleCard:nth-child(" + (index + 1) + ") .rbox-inner .y-box .y-left .J_source").textContent.trim();
+                    const tt_comment = document.querySelector(".feedBox .sections .articleCard:nth-child(" + (index + 1) + ") .rbox-inner .y-box .y-left .comment").textContent.trim();
                     const tt_url = "https://www.toutiao.com" + document.querySelector(".feedBox .sections .articleCard:nth-child(" + (index + 1) + ") .rbox-inner .title-box a").getAttribute("href").trim();
                     const y = {
                         website: "toutiao.com",
-                        price: tt_title,
-                        name: tt_user,
-                        commit: tt_url,
-                        keyType: keyType
+                        title: tt_title,
+                        userName: tt_user,
+                        url: tt_url,
+                        comment: tt_comment
                     };
                     items.push(y);
                 }
             }
             return JSON.stringify(items);
-        }, [keyType], (result: CallbackResult) => {
+        }, [], (result: CallbackResult) => {
             console.log(result.value);
+            callback(result.value);
         });
     }
 };

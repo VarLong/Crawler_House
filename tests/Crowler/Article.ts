@@ -23,6 +23,8 @@ module.exports = {
         console.log(article.section.TOUTIAO);
         const toutiaoTool = article.section.TOUTIAO;
         toutiaoTool.goToTouTiao();
-        toutiaoTool.searchForKey("大大", "title");
+        toutiaoTool.searchForKey(searchKey, (items: any) => {
+            console.log(items);
+        });
     }
 };
