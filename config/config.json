@@ -1,15 +1,12 @@
 {
-    "mongoDbUrl": "mongodb://127.0.0.1:27017/House_Details",
-    "lianjia": {
-        "new_house": {
-            "baseUrl": "https://tj.fang.lianjia.com/loupan/",
-            "outputPath": "temp_data/lianjia_new_details.json"
-        },
-        "er_house": {
-            "baseUrl": "https://tj.lianjia.com/ershoufang/",
-            "parts": ["xiqing/"],
-            "outputPath": "temp_data/lianjia_er_details.json"
-        }
-    },
-    "julixinfang": {}
+  "mongoDbUrl": "mongodb://127.0.0.1:27017/House_Details",
+  "toutiao": {
+    "baseUrl": "https://www.toutiao.com/",
+    "outputPath": "temp_data/Toutiao_news",
+    "searchUrl": "https://www.toutiao.com/search/?keyword="
+  },
+  "sina": {
+    "baseUrl": "https://news.sina.com.cn/",
+    "outputPath": "temp_data/Sina_news"
+  }
 }

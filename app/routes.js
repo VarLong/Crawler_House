@@ -1,5 +1,5 @@
 const express = require('express');
-const main_crawler = require('./schedule_task/main_crawler');
+const TouTiao_Crawler = require('./schedule_task/toutiao_crawler');
 // create our router object
 const router = express.Router();
 
@@ -12,14 +12,15 @@ router.use(function (request, response, next) {
     next();
 });
 
-// main_crawler.lianjia_new_Crawler.startCrowle();
+ TouTiao_Crawler.WeberDriver_Crawler.startCrowleBySearch("covid");
 // main_crawler.lianjia_er_Crawler.startCrowlePart('xiqing/');
 
 router.route('/').get((req, res) => {
+    console.log('home page get!')
     res.render('home', { sess: req.session });
 });
 
-const lianjia = require('./content_pages/lianjia');
-router.use('/lianjia', lianjia);
+const toutiao = require('./routes/Toutiao');
+router.use('/toutiao', toutiao);
 
 module.exports = router;

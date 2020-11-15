@@ -1,0 +1,42 @@
+<%- contentFor('body') %>
+<div class="container">
+    <div id="TOUTIAO_interfaces">TOU TIAO _NEWS</div>
+    <div id="data_container"></div>
+</div>
+
+<script>
+    function renderLianjiaData() {
+        // $.ajax({
+        //     url: "./toutiao/lianjia_new_details",
+        //     type: "get",
+        //     error: function (error) {
+        //     },
+        //     success: function (result) {
+        //         console.log(result);
+        //         resultItem = JSON.parse(result);
+        //         $('#data_container').text(result);
+        //     }
+        // });
+    };
+    function renderLianjiaErData() {
+        // $.ajax({
+        //     url: "./toutiao/lianjia_er_details",
+        //     type: "get",
+        //     error: function (error) {
+        //     },
+        //     success: function (result) {
+        //         console.log(result);
+        //         resultItem = JSON.parse(result);
+        //         $('#data_container').text(result);
+        //     }
+        // });
+    }
+    $('#TOUTIAO_interfaces').click(() => {
+        renderLianjiaData();
+    });
+    $('#er_house').click(() => {
+        renderLianjiaErData();
+    });
+
+
+</script>

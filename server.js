@@ -32,6 +32,5 @@ app.listen(port, function () {
 
 process.on('uncaughtException', function (ex) {
     console.log("UncaughtException - " + ex);
-    tools.sendNotificationEmail('👻 UncaughtException', ["UncaughtException - ", ex]);
 });
 
