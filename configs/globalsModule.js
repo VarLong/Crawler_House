@@ -1,5 +1,5 @@
 
-console.log('start globalModules.js');
+console.log('Start globalModules.js');
 const test_settings = require("./test_settings");
 
 module.exports = {

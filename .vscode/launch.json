@@ -1,0 +1,58 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch",
+            "program": "${workspaceRoot}/node_modules/nightwatch/bin/runner.js",
+            "cwd": "${workspaceRoot}",
+            "stopOnEntry": false,
+            "args": [
+                "--test",
+                "artifacts\\build\\tests\\Authentication\\LogInLogOut.js",
+                // "--var", "mockMode=mock",
+                // "--var", "mockMode=mock",
+                // "--var", "testAccountID=TV3PF_JIASHUAN@OUTLOOK.COM",
+                // "--var", "testAccountPassword=Tv3PF.Test",
+                // "--var", "testUserId=e5f57a98736fb80fbdede031671962c1",
+                // "--var", "slot=S88",
+                // "--var", "site=A",
+                // "--var", "addLogToTestRailRun=694686@1031303",
+                // "--deployment", "oci",
+                // "--device", "chrome-windows",
+                // "--BuildNumber", "20181125-0349cc8-7-rs",
+                // "--var", "featureGroup=subscribedOnnowDisable",
+                // "--env", "ofunk-localchrome",
+                "--env", "ofunk-chrome-windows-local-blr-grid"
+                // "--env", "ofunk-1ft-android-emu-blr-grid"
+                // "--env", "oci-chrome-docker-blr-grid",
+                // "--env", "oci-ieedge-blr-grid-151",
+                // "--env", "oci-chrome-windows-blr-grid-151",
+                //"--verbose"
+                //"--browserName", "8844c2a7-c11b-4c40-a112-dd03437efabd"
+                //"--reporter", "artifacts\\build\\lib\\custom-reporters\\reporter.js"
+            ],
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "env": {
+                "NODE_ENV": "development",
+                "externalConsole": true,
+                "sourceMaps": false,
+                "outDir": null
+            },
+        },
+        {
+            "runtype": "legacy",
+            "name": "Attach",
+            "type": "node",
+            "request": "attach",
+            "port": 5858
+        }
+    ]
+}
