@@ -14,16 +14,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^12.7.2",
     "blink-diff": "^1.0.13",
+    "chromedriver": "^76.0.1",
     "del": "^2.2.0",
-    "fs-extra": "^8.1.0",
-    "gulp": "^3.9.1",
-    "gulp-install": "^0.6.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-tslint": "^7.1.0",
-    "gulp-typescript": "3.0.0",
+    "fs-extra": "^9.0.1",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
+    "gulp-install": "^1.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-tslint": "^8.1.4",
+    "gulp-typescript": "^5.0.1",
+    "json5": "^0.4.0",
     "lodash": "^3.10.1",
     "log4js": "^2.3.3",
+    "minimist": "^1.2.0",
     "mssql": "^3.3.0",
     "nightwatch": "^1.2.1",
     "request": "^2.69.0",
@@ -34,10 +39,5 @@
     "typescript-require": "^0.2.10",
     "underscore": "^1.8.3"
   },
-  "devDependencies": {
-    "@types/node": "^12.7.2",
-    "chromedriver": "^76.0.1",
-    "json5": "^0.4.0",
-    "minimist": "^1.2.0"
-  }
+  "devDependencies": {}
 }
