@@ -1,7 +1,6 @@
 ///<reference path='../../typings/tsd.d.ts' />
 
 const fse = require("fs-extra");
-const fs = require("fs");
 const JSON5 = require("json5");
 
 function pad(n: number): string {
@@ -11,24 +10,24 @@ function pad(n: number): string {
 module.exports = {
 
     initTempData(filePath: string) {
-        fs.writeFileSync(filePath, JSON.stringify([]));
+        fse.writeFileSync(filePath, JSON.stringify([]));
     },
 
     saveTempData(list: any) {
         const filePath = "./temp_data/Tj_ghj.json";
         let f_list = [];
-        f_list = JSON.parse(fs.readFileSync(filePath));
+        f_list = JSON.parse(fse.readFileSync(filePath));
         if (Array.isArray(list)) {
             f_list = f_list.concat(list);
         } else {
             f_list.push(list);
         }
-        fs.writeFileSync(filePath, JSON.stringify(f_list));
+        fse.writeFileSync(filePath, JSON.stringify(f_list));
     },
 
     saveData(filePath: string, list: any) {
         const fp = "./temp_data/" + filePath;
-        fs.writeFileSync(fp, JSON.stringify(list));
+        fse.writeFileSync(fp, JSON.stringify(list));
     },
 
     // Load .js, .json, or .json5 file, or die trying.

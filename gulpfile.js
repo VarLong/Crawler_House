@@ -1,9 +1,8 @@
 const gulp = require("gulp"),
     { series } = require("gulp"),
-    gulpts = require("gulp-typescript"),
+    gulpTS = require("gulp-typescript"),
     sourcemaps = require("gulp-sourcemaps"),
     del = require("del"),
-    tsProject = gulpts.createProject("tsconfig.json"),
     gulptslint = require("gulp-tslint"),
     builddir = "artifacts/build/",
     sources = {
@@ -45,7 +44,9 @@ function ts() {
     return gulp
         .src(sources.ts)
         .pipe(sourcemaps.init())
-        .pipe(tsProject())
+        .pipe(gulpTS({
+            declaration: true
+        }))
         .on("error", onError)
         .js.pipe(sourcemaps.write("."))
         .pipe(gulp.dest(builddir));

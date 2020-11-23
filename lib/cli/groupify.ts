@@ -1,9 +1,8 @@
-const spawner = require('./spawner');
-const walker = require('./testsuitewalker');
+const spawner = require("./spawner");
+const walker = require("./testsuitewalker");
 
-function run(args, callback) {
+export function run(args, callback) {
     const filteredTestPaths = walker(args.tag, args.excludedCases, args.group);
-    spawner(filteredTestPaths, args, callback);
+    spawner.run(filteredTestPaths, args, callback);
     return;
 }
-module.exports = run;
