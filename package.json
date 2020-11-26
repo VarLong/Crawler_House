@@ -16,7 +16,7 @@
   "dependencies": {
     "@types/node": "^12.7.2",
     "blink-diff": "^1.0.13",
-    "chromedriver": "^76.0.1",
+    "chromedriver": "^84.0.1",
     "del": "^2.2.0",
     "fs-extra": "^9.0.1",
     "gulp": "^4.0.2",
@@ -35,7 +35,7 @@
     "nightwatch": "^1.2.1",
     "request": "^2.69.0",
     "selenium-server": "^3.4.0",
-    "sharp": "^0.23.0",
+    "sharp": "^0.23.4",
     "tslint": "^5.18.0",
     "typescript": "^3.5.3",
     "typescript-require": "^0.2.10",

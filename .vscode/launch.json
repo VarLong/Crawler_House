@@ -13,7 +13,7 @@
             "stopOnEntry": false,
             "args": [
                 "--test",
-                "artifacts\\build\\tests\\Authentication\\LogInLogOut.js",
+                "artifacts\\build\\tests\\Crowler\\Sina.js",
                 // "--var", "mockMode=mock",
                 // "--var", "mockMode=mock",
                 // "--var", "testAccountID=TV3PF_JIASHUAN@OUTLOOK.COM",
@@ -27,7 +27,7 @@
                 // "--BuildNumber", "20181125-0349cc8-7-rs",
                 // "--var", "featureGroup=subscribedOnnowDisable",
                 // "--env", "ofunk-localchrome",
-                "--env", "ofunk-chrome-windows-local-blr-grid"
+                "--env", "tj_ghj-localchrome"
                 // "--env", "ofunk-1ft-android-emu-blr-grid"
                 // "--env", "oci-chrome-docker-blr-grid",
                 // "--env", "oci-ieedge-blr-grid-151",

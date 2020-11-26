@@ -3,6 +3,7 @@ export interface PageObjects {
     GitHubLogInPage: any;
     GetProductDetailsTool: any;
     GetArticleTool: any;
+    LandingPage: any;
 }
 
 export interface NightWatchCustomPageObjects {
