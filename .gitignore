@@ -6,3 +6,4 @@ ShieldLog
 *.log
 ./package-lock.json
 reports
+package-lock.json

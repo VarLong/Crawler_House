@@ -4,7 +4,7 @@ import { Atom } from "./Atom";
 const pageElements = {
     submit: {
         selector: ".tn-tab-custom-login",
-        locateStrategy: "css"
+        locateStrategy: "css selector"
     }
 };
 
@@ -12,7 +12,7 @@ class LandingPage extends Atom {
     public login() {
         const browser = this.api;
         browser.url("https://news.sina.com.cn/");
-        this.waitForElementVisible(".tn-tab-custom-login");
+        this.waitForElementVisible("@submit");
         browser.click(".tn-tab-custom-login");
     }
 }
