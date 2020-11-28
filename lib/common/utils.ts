@@ -9,11 +9,11 @@ function pad(n: number): string {
 
 module.exports = {
 
-    initTempData(filePath: string) {
+    initTempData: function (filePath: string) {
         fse.writeFileSync(filePath, JSON.stringify([]));
     },
 
-    saveTempData(list: any) {
+    saveTempData: function (list: any) {
         const filePath = "./temp_data/Tj_ghj.json";
         let f_list = [];
         f_list = JSON.parse(fse.readFileSync(filePath));
@@ -25,13 +25,13 @@ module.exports = {
         fse.writeFileSync(filePath, JSON.stringify(f_list));
     },
 
-    saveData(filePath: string, list: any) {
+    saveData: function (filePath: string, list: any) {
         const fp = "./temp_data/" + filePath;
         fse.writeFileSync(fp, JSON.stringify(list));
     },
 
     // Load .js, .json, or .json5 file, or die trying.
-    checkConfigPath(pathname: string) {
+    checkConfigPath: function (pathname: string) {
         try {
             return JSON5.parse(fse.readFileSync(pathname).toString());
         } catch (err) {
@@ -40,14 +40,14 @@ module.exports = {
         }
     },
 
-    formattedTimestamp: (): string => {
+    formattedTimestamp: function () {
         const d = new Date();
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const time = [pad(d.getHours()), pad(d.getMinutes()), pad(d.getSeconds())].join(":");
         return "[" + [d.getDate(), months[d.getMonth()], time].join(" ") + "] ";
     },
 
-    checkUrl: (url: string): boolean => {
+    checkUrl: function (url: string) {
         const expFormat = "^((https|http|ftp|rtsp|mms)://)"
             + "(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?"
             + "(([0-9]{1,3}\.){3}[0-9]{1,3}"
@@ -67,11 +67,17 @@ module.exports = {
         }
     },
 
-    createDir(path: string) {
+    createDir: function (path: string) {
         fse.mkdirsSync(path, function (err: any) {
             if (err) {
                 console.error(err);
             }
         });
+    },
+
+    obj2Url: function (searchParameters: any) {
+        let urlParameters = JSON.stringify(searchParameters);
+        urlParameters = "?" + urlParameters.replace(/{|}|"/g, "").replace(/:/g, "=").replace(/,/g, "&");
+        return urlParameters;
     }
 };

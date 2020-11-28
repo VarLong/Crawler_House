@@ -1,14 +1,13 @@
 /// <reference path="../../typings/tsd.d.ts" />
 import { Atom } from "./Atom";
 
-const pageElements = {
-    submit: {
-        selector: ".tn-tab-custom-login",
-        locateStrategy: "css selector"
-    }
-};
-
 class LandingPage extends Atom {
+    public static elements = {
+        submit: {
+            selector: ".tn-tab-custom-login",
+            locateStrategy: "css selector"
+        }
+    };
     public login() {
         const browser = this.api;
         browser.url("https://news.sina.com.cn/");
@@ -20,5 +19,5 @@ class LandingPage extends Atom {
 const commands = new LandingPage()["__proto__"];
 module.exports = {
     commands: [commands],
-    elements: pageElements
+    elements: LandingPage.elements
 };

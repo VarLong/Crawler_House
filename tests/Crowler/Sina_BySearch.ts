@@ -7,7 +7,7 @@ import { NightWatchBrowser } from "../../typings/nightwatch/nightwatch";
 const setup = require("../../lib/common/setup");
 
 module.exports = {
-    tags: ["Article"],
+    tags: ["Search"],
     before(browser: NightWatchBrowser) {
         setup.begin(browser);
         const landingPage = browser.page.LandingPage();
@@ -18,6 +18,8 @@ module.exports = {
         setup.end(browser);
     },
 
-    "Go to TouTioa and search by keywork"(browser: NightWatchBrowser) {
+    "Search by key"(browser: NightWatchBrowser) {
+        browser.page.Search_Sina().go();
+        browser.page.Search_Sina().getDetailUrls();
     }
 };

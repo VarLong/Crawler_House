@@ -5,6 +5,7 @@ const deployments = utils.checkConfigPath("./configs/deployments.json5");
 const capabilities = utils.checkConfigPath("./configs/capabilities.json5");
 const merge = require("lodash/object/merge");
 const args = minimist(process.argv.slice(2));
+const delaultDeployment = "localchrome";
 
 function mergeDeploymentAndCapabilitiesJson(settings, deployment) {
     settings = Object.assign(deployments[args.deployment], capabilities[args.device]);
@@ -17,18 +18,17 @@ function mergeDeploymentAndCapabilitiesJson(settings, deployment) {
 
 module.exports = (function () {
     let settings = {};
+    args['deployment'] = delaultDeployment;
     if (args.env) {
-        console.log(args.env);
         const i = args.env.indexOf('-');
         const dep = args.env.slice(0, i);
         const dev = args.env.slice(i + 1, args.env.length);
         args['device'] = dev;
         args['deployment'] = dep;
-    }
-    if (args.device) {
+    }else{
+        console.log(`Can not find env, please set var --env`);
     }
     if (args.deployment && deployments[args.deployment]) {
-        const deploment = deployments[args.deployment];
         settings = mergeDeploymentAndCapabilitiesJson(settings, args.deployment);
     } else {
         console.log(`Can not find deployment ${args.deployment}`);

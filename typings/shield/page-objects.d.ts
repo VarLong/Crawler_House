@@ -4,6 +4,7 @@ export interface PageObjects {
     GetProductDetailsTool: any;
     GetArticleTool: any;
     LandingPage: any;
+    Search_Sina: any;
 }
 
 export interface NightWatchCustomPageObjects {
